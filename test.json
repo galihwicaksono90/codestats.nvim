@@ -1,0 +1,168 @@
+{
+    "error": {
+        "error": {
+            "message": "Request failed with status code 400",
+            "name": "Error",
+            "stack": "createError@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:164363:26\nsettle@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:164353:25\nhandleLoad@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:164253:15\ndispatchEvent@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:33847:31\nsetReadyState@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:32970:27\n__didCompleteResponse@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:32793:29\nemit@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:4969:42\n__callFunction@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:5984:36\nhttp://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:5712:31\n__guard@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:5938:15\ncallFunctionReturnFlushedQueue@http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.clubworx.staging.app&modulesOnly=false&runModule=true:5711:21\ncallFunctionReturnFlushedQueue@[native code]",
+            "config": {
+                "url": "/api/v3/oauth/token",
+                "method": "post",
+                "data": "{\"username\":\"gwicaksono69\",\"password\":\"Password123\",\"grant_type\":\"password\",\"client_id\":\"EaE5HksQiBbR3a-VG8GKM1EJeQJvEDFYM-kVHBDL1E4\",\"client_secret\":\"_e_mLJDZiu7RU86N1q2HeP2g65ukIbLirK_uXPuhZl4\",\"app_id\":\"com.clubworx.staging.app\"}",
+                "headers": {
+                    "Accept": "application/json, text/plain, */*",
+                    "Content-Type": "application/json;charset=utf-8",
+                    "transactionId": "41729b2c-37d1-44f0-f414-867de47559c1",
+                    "authorization": ""
+                },
+                "baseURL": "https://app.cwx-staging.com/",
+                "transformRequest": [
+                    null
+                ],
+                "transformResponse": [
+                    null
+                ],
+                "timeout": 30000,
+                "xsrfCookieName": "XSRF-TOKEN",
+                "xsrfHeaderName": "X-XSRF-TOKEN",
+                "maxContentLength": -1,
+                "maxBodyLength": -1
+            }
+        },
+        "errorCount": 6
+    }
+     "success": {
+        "data": {
+            "access_token": "Q-EDCUCM2dhR_yDYF7c7WvzBP1BYFLuhgxz4u3LwLiA",
+            "token_type": "Bearer",
+            "expires_in": 7200,
+            "refresh_token": "vZF6Bfjwao3-5PYqCg-vnsYovxjQcPwWupEY-M1YbEI",
+            "created_at": 1693469214
+        },
+        "status": 200,
+        "headers": {
+            "x-powered-by": "Phusion Passenger(R) 6.0.17, cloud66",
+            "x-request-id": "9fdee02f-62c0-46cc-aef6-bed8ad29b4e8",
+            "transfer-encoding": "chunked",
+            "content-type": "application/json; charset=utf-8",
+            "cache-control": "no-store",
+            "referrer-policy": "strict-origin-when-cross-origin",
+            "etag": "W/\"28b6513a14de67576dbe2aa0387c1fcf\"",
+            "date": "Thu, 31 Aug 2023 08:06:54 GMT",
+            "server": "nginx + Phusion Passenger(R) 6.0.17",
+            "strict-transport-security": "max-age=63072000; includeSubDomains",
+            "x-content-type-options": "nosniff",
+            "x-download-options": "noopen",
+            "x-runtime": "0.302410",
+            "x-permitted-cross-domain-policies": "none",
+            "connection": "keep-alive",
+            "status": "200 OK"
+        },
+        "config": {
+            "url": "/api/v3/oauth/token",
+            "method": "post",
+            "data": "{\"username\":\"gwicaksono38\",\"password\":\"Password123\",\"grant_type\":\"password\",\"client_id\":\"EaE5HksQiBbR3a-VG8GKM1EJeQJvEDFYM-kVHBDL1E4\",\"client_secret\":\"_e_mLJDZiu7RU86N1q2HeP2g65ukIbLirK_uXPuhZl4\",\"app_id\":\"com.clubworx.staging.app\"}",
+            "headers": {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json;charset=utf-8",
+                "transactionId": "fb0134e7-21c1-4ca5-d8d0-d0df8a2cf515",
+                "authorization": ""
+            },
+            "baseURL": "https://app.cwx-staging.com/",
+            "transformRequest": [
+                null
+            ],
+            "transformResponse": [
+                null
+            ],
+            "timeout": 30000,
+            "xsrfCookieName": "XSRF-TOKEN",
+            "xsrfHeaderName": "X-XSRF-TOKEN",
+            "maxContentLength": -1,
+            "maxBodyLength": -1
+        },
+        "request": {
+            "UNSENT": 0,
+            "OPENED": 1,
+            "HEADERS_RECEIVED": 2,
+            "LOADING": 3,
+            "DONE": 4,
+            "readyState": 4,
+            "status": 200,
+            "timeout": 30000,
+            "withCredentials": true,
+            "upload": {},
+            "_aborted": false,
+            "_hasError": false,
+            "_method": "POST",
+            "_perfKey": "network_XMLHttpRequest_https://app.cwx-staging.com/api/v3/oauth/token",
+            "_response": "{\"access_token\":\"Q-EDCUCM2dhR_yDYF7c7WvzBP1BYFLuhgxz4u3LwLiA\",\"token_type\":\"Bearer\",\"expires_in\":7200,\"refresh_token\":\"vZF6Bfjwao3-5PYqCg-vnsYovxjQcPwWupEY-M1YbEI\",\"created_at\":1693469214}",
+            "_url": "https://app.cwx-staging.com/api/v3/oauth/token",
+            "_timedOut": false,
+            "_trackingName": "unknown",
+            "_incrementalEvents": false,
+            "_performanceLogger": {
+                "_timespans": {
+                    "network_XMLHttpRequest_https://app.cwx-staging.com/api/v3/oauth/token": {
+                        "startTime": 44333772.14543,
+                        "endTime": 44335163.867722,
+                        "totalTime": 1391.7222919985652
+                    }
+                },
+                "_extras": {},
+                "_points": {
+                    "initializeCore_start": 44328508.479094,
+                    "initializeCore_end": 44328546.510094
+                },
+                "_pointExtras": {},
+                "_closed": false
+            },
+            "responseHeaders": {
+                "X-Powered-By": "Phusion Passenger(R) 6.0.17, cloud66",
+                "X-Request-Id": "9fdee02f-62c0-46cc-aef6-bed8ad29b4e8",
+                "Transfer-Encoding": "chunked",
+                "Content-Type": "application/json; charset=utf-8",
+                "Cache-Control": "no-store",
+                "Referrer-Policy": "strict-origin-when-cross-origin",
+                "ETag": "W/\"28b6513a14de67576dbe2aa0387c1fcf\"",
+                "Date": "Thu, 31 Aug 2023 08:06:54 GMT",
+                "Server": "nginx + Phusion Passenger(R) 6.0.17",
+                "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
+                "X-Content-Type-Options": "nosniff",
+                "X-Download-Options": "noopen",
+                "X-Runtime": "0.302410",
+                "X-Permitted-Cross-Domain-Policies": "none",
+                "Connection": "keep-alive",
+                "Status": "200 OK"
+            },
+            "_requestId": null,
+            "_headers": {
+                "accept": "application/json, text/plain, */*",
+                "content-type": "application/json;charset=utf-8",
+                "transactionid": "fb0134e7-21c1-4ca5-d8d0-d0df8a2cf515",
+                "authorization": ""
+            },
+            "_responseType": "",
+            "_sent": true,
+            "_lowerCaseResponseHeaders": {
+                "x-powered-by": "Phusion Passenger(R) 6.0.17, cloud66",
+                "x-request-id": "9fdee02f-62c0-46cc-aef6-bed8ad29b4e8",
+                "transfer-encoding": "chunked",
+                "content-type": "application/json; charset=utf-8",
+                "cache-control": "no-store",
+                "referrer-policy": "strict-origin-when-cross-origin",
+                "etag": "W/\"28b6513a14de67576dbe2aa0387c1fcf\"",
+                "date": "Thu, 31 Aug 2023 08:06:54 GMT",
+                "server": "nginx + Phusion Passenger(R) 6.0.17",
+                "strict-transport-security": "max-age=63072000; includeSubDomains",
+                "x-content-type-options": "nosniff",
+                "x-download-options": "noopen",
+                "x-runtime": "0.302410",
+                "x-permitted-cross-domain-policies": "none",
+                "connection": "keep-alive",
+                "status": "200 OK"
+            },
+            "_subscriptions": [],
+            "responseURL": "https://app.cwx-staging.com/api/v3/oauth/token"
+        }
+    }
+}

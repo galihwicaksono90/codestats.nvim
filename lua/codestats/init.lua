@@ -4,13 +4,14 @@ local LEVEL_FACTOR = 0.025
 
 local curl = require 'plenary.curl'
 local filetype_map = require 'codestats.filetypes'
+local notify = require 'notify'
 
 local calculate_level = function(xp)
   return math.floor(LEVEL_FACTOR * math.sqrt(xp))
 end
 
 local filetype_to_language = function(ft)
-  return filetype_map[ft] or ft
+  return filetype_map[ft]
 end
 
 local CodeStats = {
@@ -20,6 +21,7 @@ local CodeStats = {
     send_on_timer = true, -- send xp on timer
     timer_interval = 60000, -- timer interval in milliseconds
     curl_timeout = 5, -- curl request timeout in seconds
+    active = false, -- curl request timeout in seconds
   },
 
   current_xp_dict = {},
@@ -49,6 +51,10 @@ local CodeStats = {
         .. self.config.username
     end
     self.config.pulse_url = (self.config.base_url or 'https://codestats.net') .. '/api/my/pulses'
+
+    if self.config.active == nil then
+      self.config = false
+    end
 
     -- autocmds
     local group = vim.api.nvim_create_augroup('codestats-plugin-autocommands', { clear = true })
@@ -102,8 +108,20 @@ local CodeStats = {
 
     -- user commands
     vim.api.nvim_create_user_command('CodeStatsXpSend', function()
+      if not self.config.active then
+        notify('Codestats not active', vim.log.levels.WARN, { title = 'CodeStats' })
+        return
+      end
       self:send_xp()
     end, { desc = 'Explicitly send XP to Code::Stats' })
+
+    vim.api.nvim_create_user_command('CodeStatsToggle', function()
+      self:toggle_codestats()
+    end, { desc = 'Disable codestats' })
+
+    vim.api.nvim_create_user_command('CodeStatsPrintStatus', function()
+      notify(self:get_status(), vim.log.levels.INFO, { title = 'CodeStats' })
+    end, { desc = 'Disable codestats' })
 
     vim.api.nvim_create_user_command('CodeStatsProfileUpdate', function()
       self:update_profile()
@@ -111,6 +129,35 @@ local CodeStats = {
 
     -- initial profile data update
     self:update_profile()
+  end,
+
+  get_status = function(self)
+    if self.config.active then
+      return 'Active'
+    end
+    return 'Inactive'
+  end,
+
+  disable_codestats = function(self)
+    self.config.active = false
+    notify('Codestats ' .. self:get_status(), 'info', {
+      title = 'CodeStats',
+    })
+  end,
+
+  enable_codestats = function(self)
+    self.config.active = true
+    notify('Codestats ' .. self:get_status(), 'info', {
+      title = 'CodeStats',
+    })
+  end,
+
+  toggle_codestats = function(self)
+    if self.config.active then
+      self:disable_codestats()
+      return
+    end
+    self:enable_codestats()
   end,
 
   add_xp = function(self, filetype, xp)
@@ -121,11 +168,19 @@ local CodeStats = {
     -- get the language type based on what vim passed to us
     local language_type = filetype_to_language(filetype)
 
+    if language_type == nil then
+      return
+    end
+
     local count = self.current_xp_dict[language_type] or 0
     self.current_xp_dict[language_type] = count + xp
   end,
 
   send_xp = function(self)
+    if not self.config.active then
+      return
+    end
+
     local xp_list = {}
     for ft, xp in pairs(self.current_xp_dict) do
       table.insert(xp_list, {
@@ -137,6 +192,8 @@ local CodeStats = {
     if #xp_list == 0 then
       return
     end
+
+    -- notify('Sending Xp', vim.log.levels.INFO, { title = 'CodeStats' })
 
     curl.post {
       url = self.config.pulse_url,
@@ -159,15 +216,18 @@ local CodeStats = {
         self:update_profile()
       end,
       on_error = function(err)
-        -- TODO: handle error
+        notify('Error sending xp', vim.log.levels.ERROR, { title = 'CodeStats' })
       end,
     }
   end,
 
   update_profile = function(self)
-    if not self.config.profile_url then
+    if not self.config.active or not self.config.profile_url then
       return
     end
+
+    -- notify('Update profile', vim.log.levels.INFO, { title = 'CodeStats' })
+
     curl.get {
       url = self.config.profile_url,
       headers = {
@@ -195,7 +255,7 @@ local CodeStats = {
         end)
       end,
       on_error = function(err)
-        -- TODO: handle error
+        notify('Error updating profile', vim.log.levels.ERROR, { title = 'CodeStats' })
       end,
     }
   end,
