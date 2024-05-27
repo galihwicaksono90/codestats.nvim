@@ -17,11 +17,11 @@ end
 local CodeStats = {
   config = {
     base_url = 'https://codestats.net', -- codestats.net base url
-    send_on_exit = true, -- send xp on nvim exit
-    send_on_timer = true, -- send xp on timer
-    timer_interval = 60000, -- timer interval in milliseconds
-    curl_timeout = 5, -- curl request timeout in seconds
-    active = false, -- curl request timeout in seconds
+    send_on_exit = true,                -- send xp on nvim exit
+    send_on_timer = true,               -- send xp on timer
+    timer_interval = 60000,             -- timer interval in milliseconds
+    curl_timeout = 5,                   -- curl request timeout in seconds
+    active = false,                     -- curl request timeout in seconds
   },
 
   current_xp_dict = {},
@@ -47,8 +47,8 @@ local CodeStats = {
 
     if self.config.username then
       self.config.profile_url = (self.config.base_url or 'https://codestats.net')
-        .. '/api/users/'
-        .. self.config.username
+          .. '/api/users/'
+          .. self.config.username
     end
     self.config.pulse_url = (self.config.base_url or 'https://codestats.net') .. '/api/my/pulses'
 
@@ -109,7 +109,7 @@ local CodeStats = {
     -- user commands
     vim.api.nvim_create_user_command('CodeStatsXpSend', function()
       if not self.config.active then
-        notify('Codestats not active', vim.log.levels.WARN, { title = 'CodeStats' })
+        notify('Codestats is not active', vim.log.levels.WARN, { title = 'CodeStats' })
         return
       end
       self:send_xp()
@@ -124,6 +124,10 @@ local CodeStats = {
     end, { desc = 'Disable codestats' })
 
     vim.api.nvim_create_user_command('CodeStatsProfileUpdate', function()
+      if not self.config.active then
+        notify('Codestats is not active', vim.log.levels.WARN, { title = 'CodeStats' })
+        return
+      end
       self:update_profile()
     end, { desc = 'Explicitly pull profile data from Code::Stats' })
 
