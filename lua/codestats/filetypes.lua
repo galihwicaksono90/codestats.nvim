@@ -71,6 +71,7 @@ return {
   ['typescriptreact'] = 'TypeScript (React)',
   ['vb'] = 'Visual Basic',
   ['vbnet'] = 'Visual Basic .NET',
+  ['vue'] = 'Vue',
   ['vim'] = 'VimL',
   ['xml'] = "XML",
   ['xsl'] = "XSL",
